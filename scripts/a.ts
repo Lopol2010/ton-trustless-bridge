@@ -114,6 +114,7 @@ async function verifyMasterchainBlock(
 
 
     const blockHeader = await liteClient.getBlockHeader(newBlockIdToVerify);
+    console.log(blockHeader);
     const blockHash = Cell.fromBoc(blockHeader.headerProof)[0].refs[0].hash(0);
     assert(blockHash.toString("hex") === blockHeader.id.rootHash.toString("hex"));
 
