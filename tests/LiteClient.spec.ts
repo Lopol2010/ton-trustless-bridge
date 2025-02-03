@@ -105,29 +105,10 @@ describe('LiteClient', () => {
     beforeEach(async () => {
         blockchain = await Blockchain.create();
 
-        /*
-            TODO: (script side) need to send to contract only validators with existing signature
-            TODO: (possible optimization?) maybe rewrite signatures array from cells list into tuples list 
-
-            TODO:
-            1. store validator set during initialization (in my format)
-            2. in new_key_block, should send validatorset and signatures (in my format) for the new block
-            3. create signature verification logic
-            4. store new validator set
-            5. add blockheader and its proof verification
-            6. request configparam34 from toncenter and try to parse as a block in js, 
-                then try to repeat that in Tolk, so that validator set can be retrieved from that, insdead of my own data structure like now
-            7. i guess in final step, need to send raw header and param34 and parse them in contract (though contest ends in 2 days, so probably impossible)
-
-        */
-
-        // let blocks = JSON.parse(readFileSync('blocks.json').toString(), reviver);
         let currentKeyBlock = blocks[0];
-        // blocks.shift()
-        // let newKeyBlock = blocks[0];
 
         let validators = currentKeyBlock.parsedBlock.extra.custom.config.config.map.get("22")
-        let validatorsBoc = await validatorSetAsBoc(validators.cur_validators.list.map.entries(), blocks[0].parsedBlock) // TODO: should be old block (block[1])
+        let validatorsBoc = await validatorSetAsBoc(validators.cur_validators.list.map.entries(), blocks[0].parsedBlock) // TODO: should be old block (block[-1])
 
         liteClient = blockchain.openContract(
             LiteClient.createFromConfig(

@@ -10,5 +10,7 @@
         "skipLibCheck": true,
         "moduleResolution": "node",
         "lib": ["ES2020", "dom"],        
-    }
+        "incremental": true
+    },
+    // "exclude": ["node_modules/"]
 }

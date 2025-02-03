@@ -1,26 +1,25 @@
 # trustless-bridge
+## What's done?
+Good news: implemented new_key_block message with signature validation and mechanism to update currently known validator set  
+Bad news: nothing else is done. No proof verification, all cells are in my own format (i.e. not block.tlb format)  
+
+## Todo list if I got luck to be in round 2
+1. Make contract to work with block header and configparam34 in original format received from lite-server
+2. Parse original data formats in contract side
+3. Verification for block header, configparam34
+4. Add check_block message and transaction checker contract
 
 ## Project structure
 
--   `contracts` - source code of all the smart contracts of the project and their dependencies.
--   `wrappers` - wrapper classes (implementing `Contract` from ton-core) for the contracts, including any [de]serialization primitives and compilation functions.
--   `tests` - tests for the contracts.
--   `scripts` - scripts used by the project, mainly the deployment scripts.
 
 ## How to use
 
-### Build
-
-`npx blueprint build` or `yarn blueprint build`
-
 ### Test
 
-`npx blueprint test` or `yarn blueprint test`
+`npx blueprint test`
 
 ### Deploy or run another script
-
-`npx blueprint run` or `yarn blueprint run`
-
-### Add a new contract
-
-`npx blueprint create ContractName` or `yarn blueprint create ContractName`
+Test validation algorithm at javascript side only  
+`npx blueprint run a.ts --testnet --tonconnect`
+Download blocks and signatures to local files for testing  
+`npm run download`

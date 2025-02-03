@@ -72,7 +72,6 @@ fun onInternalMessage(myBalance: int, msgValue: int, msgFull: cell, msgBody: sli
             if(success) {
                 i += 1;
                 var publicKey = value.loadUint(256);
-                // TODO: check weights
                 var weight = value.loadUint(256);
 
                 if(!isSliceSignatureValid(data_to_sign, signature, publicKey)) {
