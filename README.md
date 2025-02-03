@@ -1,4 +1,3 @@
-# trustless-bridge
 ## What's done?
 **Good news**: implemented new_key_block message with signature validation and mechanism to update currently known validator set  
 **Bad news**: nothing else is done. No proof verification, all cells are in my own format (i.e. not block.tlb format)  
